@@ -1,15 +1,17 @@
 #include <iostream>
 
-#ifdef __LOGGER__
+#ifndef __LOGGER__
 #define __LOGGER__
 
-namespace logger {
+class MyLog{
+public:
+	MyLog();
+	~MyLog();
+	void LOGD(char msg[]);
+	void setTag(const char* tag);
 
-	void LOGI(string tag, char msg[]);
-	void LOGV(string tag, char msg[]);
-	void LOGD(string tag, char msg[]);
-	void LOGE(string tag, char msg[]);
-
+private:
+	const char* mtag;
 };
 
 #endif

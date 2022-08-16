@@ -1,36 +1,28 @@
-#include "Log.h"
+#include "log.h"
 
 #include <iostream>
 
 using namespace std;
 
-namespace logger {
-
-	void LOGI(string tag, char msg[]) {
-		char tagn[100];
-		strcpy_s(tagn,tag.c_str());
-		strncat_s(tagn, msg, strlen(msg) + 1);
-		cout << tagn << endl;
-	}
-
-	void LOGV(string tag, char msg[]){
-		char tagn[100];
-		strcpy_s(tagn, tag.c_str());
-		strncat_s(tagn, msg, strlen(msg) + 1);
-		cout << tagn << endl;
-	}
-
-	void LOGD(string tag, char msg[]) {
-		char tagn[100];
-		strcpy_s(tagn, tag.c_str());
-		strncat_s(tagn, msg, strlen(msg) + 1);
-		cout << tagn << endl;
-	}
-
-	void LOGE(string tag, char msg[]) {
-		char tagn[100];
-		strcpy_s(tagn, tag.c_str());
-		strncat_s(tagn, msg, strlen(msg) + 1);
-		cout << tagn << endl;
-	}
+MyLog::MyLog() {
+	cout << "init MyLog" << endl;
 }
+MyLog::~MyLog(){
+	cout << "init ~MyLog" << endl;
+}
+
+void MyLog::LOGD(char msg[]) {
+	cout << "LOGD" << endl;
+	char tagn[100];
+	strncat_s(tagn, mtag, strlen(mtag) + 1);
+	strncat_s(tagn, msg, strlen(msg) + 1);
+	cout << tagn << endl;
+}
+void MyLog::setTag(const char* tag) {
+	mtag = tag;
+	cout << "setTag" << endl;
+}
+
+	
+
+

@@ -1,10 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <dirent.h>
-#include "log.h"
+#include "Log.cpp"
 
 using namespace std;
-using namespace logger;
 
 #define TAG "MYTest"
 #define ERR "MYTest-ERR"
@@ -27,17 +26,19 @@ int main(){
 
 	char path[] = "E:/cfiles";
 	DIR* dir = opendir(path);
-
+	MyLog log;
+	const char* tagg = TAG;
+	log.setTag(tagg);
 	if (!dir) {
-		LOGE(ERR,path);
+		log.LOGD(path);
 	}
 	else
 	{
-		LOGD(TAG, path);
+		log.LOGD(path);
 	}
 	struct dirent* entry;
 	while ((entry = readdir(dir))) {
-		LOGD(TAG, entry->d_name);
+		log.LOGD(entry->d_name);
 	}
 	closedir(dir);
 	return 0;
